@@ -109,8 +109,6 @@ void umpire_main(int nplayers)
     for(int i=1;i<nplayers;i++)
     {
 
-        //printf("fuck4");
-
         PJ = nplayers -i;
         printf("%d %d\n",PJ,i);
 
@@ -168,7 +166,6 @@ void player_main(int plid)
    if(a[plid])
    {
      this_thread::sleep_for(chrono::microseconds(a[plid]));
-    // printf("fuck7");
    }
    
 
@@ -194,15 +191,12 @@ void player_main(int plid)
 unsigned long long musical_chairs(int nplayers)
 {
     auto t1 = chrono::steady_clock::now();
-    //printf("fuck");
     // Spawn umpire thread.
     std::thread thread_obj(umpire_main, nplayers);
     /* Add your code here */
-    //printf("fuck2");
     std::thread t[nplayers];
     for(int i=0;i<nplayers;i++)
     {
-       // printf("fuck3");
         t[i]=std::thread(player_main, i);
     }
     // Spawn n player threads.
